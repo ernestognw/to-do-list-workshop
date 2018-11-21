@@ -1,46 +1,46 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Task from './components/task';
+import Title from './components/title';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       newTask: "",
       tasks: []
-    }
+    };
   }
 
-  handleTaskChange = (event) => {
+  handleTaskChange = event => {
     this.setState({
-      newTask: event.target.value,
-    })
-  }
+      newTask: event.target.value
+    });
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     let newTasks = this.state.tasks;
-    newTasks.push(this.state.newTask)
+    newTasks.push(this.state.newTask);
     this.setState({
       newTask: "",
       tasks: newTasks
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div className="container">
-        <h1 className="title">To do list <span aria-label="emoji" role="img">🔥</span></h1>
+        <Title/>
         <form onSubmit={this.handleSubmit}>
-          <input value={this.state.newTask} onChange={this.handleTaskChange} type="text" className="new-task"/>
+          <input
+            value={this.state.newTask}
+            onChange={this.handleTaskChange}
+            type="text"
+            className="new-task"
+          />
         </form>
-        <h2 className="test-label">{this.state.newTask}</h2>
-        {
-          this.state.tasks.map(task => 
-          <div className="task-container">
-            <h3 className="task">{task}</h3>
-          </div>
-          )
-        }
+        {this.state.tasks.map(task => <Task />)}
       </div>
     );
   }
