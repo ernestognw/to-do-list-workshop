@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
+import logo from './logo.svg';
 import Title from './components/title';
 import Input from './components/input';
 import TaskList from './components/task-list';
 import Layout from './components/layout';
+import Logo from './components/logo';
 
 class App extends Component {
   constructor(props) {
@@ -22,12 +24,16 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let newTasks = this.state.tasks;
-    newTasks.push(this.state.newTask);
-    this.setState({
-      newTask: "",
-      tasks: newTasks
-    });
+    if(this.state.newTask === "") {
+      alert('Ingresa una tarea')
+    } else {
+      let newTasks = this.state.tasks;
+      newTasks.push(this.state.newTask);
+      this.setState({
+        newTask: "",
+        tasks: newTasks
+      });
+    }
   };
 
   handleDelete = (id) => {
@@ -42,6 +48,7 @@ class App extends Component {
     return (
       <Layout>
         <Title/>
+        <Logo />
         <Input 
           handleSubmit={this.handleSubmit}
           handleTaskChange={this.handleTaskChange}

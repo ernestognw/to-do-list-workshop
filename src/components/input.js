@@ -5,6 +5,7 @@ function Input(props) {
     <form onSubmit={props.handleSubmit}>
       <input
         value={props.value}
+        placeholder="Ingresa una nueva tarea..."
         onChange={props.handleTaskChange}
         type="text"
         className="new-task"
