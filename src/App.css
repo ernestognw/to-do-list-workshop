@@ -26,3 +26,8 @@ body {
   text-align: center;
   font-size: 24px;
 }
+
+.test-label {
+  text-align: center;
+  color: white;
+}
