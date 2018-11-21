@@ -45,3 +45,18 @@ body {
   margin: 0;
   padding: 10px 0px 10px 10px;
 }
+
+.delete-button {
+  background-color: black;
+  border-radius: 13px;
+  height: 23px;
+  color: white;
+  border-width: 0px;
+  font-weight: bolder;
+}
+
+.button-container {
+  position: relative;
+  float: right;
+  margin: -32px 10px;
+}

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import Task from './components/task';
 import Title from './components/title';
+import Input from './components/input';
+import TaskList from './components/task-list';
+import Layout from './components/layout';
 
 class App extends Component {
   constructor(props) {
@@ -28,20 +30,28 @@ class App extends Component {
     });
   };
 
+  handleDelete = (id) => {
+    let newTasks = this.state.tasks;
+    newTasks.splice(id, 1)
+    this.setState({
+      tasks: newTasks,
+    })
+  }
+
   render() {
     return (
-      <div className="container">
+      <Layout>
         <Title/>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            value={this.state.newTask}
-            onChange={this.handleTaskChange}
-            type="text"
-            className="new-task"
-          />
-        </form>
-        {this.state.tasks.map(task => <Task />)}
-      </div>
+        <Input 
+          handleSubmit={this.handleSubmit}
+          handleTaskChange={this.handleTaskChange}
+          value={this.state.newTask}
+        />
+        <TaskList 
+          tasks={this.state.tasks}
+          handleDelete={this.handleDelete}
+        />
+      </Layout>
     );
   }
 }
